@@ -1,6 +1,6 @@
 import turtle as trtl
 
-
+import time
 
 
 
@@ -162,11 +162,10 @@ trtl.forward(8)
 trtl.penup()
 trtl.goto(1000,1000)
 
-
 #make lists for the time and different times of day
-time_day=["1","2","3","4","5","6",",7","8","9","10","11","12","13","14","15","16","16","17","18","19","20","21","22","23","24"]
+hourslist=[1,2,3,4,5,6,7,8,9,10,10,12]
 
-sun=["sun_up","sun_half","sun_down"]
+sunlist=["sun rising","sun_up","sun setting","sun_down"]
 
 
 
@@ -176,14 +175,151 @@ trtl.addshape("hour_hand",((-1,-12),(1,-12),(1,4),(3,4),(0,8),(-3,4),(-1,4),(-1,
 
 #ask what time they want(1-24)
 
-hour_hand = trtl.Turtle(shape="hour_hand")
-hour_hand.turtlesize(3,3)
+hour = trtl.Turtle(shape="hour_hand")
+
+hour.penup()
+hour.hideturtle()
+
+
+minute = trtl.Turtle(shape="hour_hand")
+minute.penup()
+
+minute.hideturtle()
+minute.goto(-200,200)
+minute.turtlesize(3,4)
+minute.left(90)
+minute.forward(35)
+minute.showturtle()
 
 
 
-for time in time_day:
-    time_input = int(trtl.textinput("What time of day is it", "What time is it?"))
-    print(time_day)
+starthour=int(trtl.textinput("What time", "What time is it(1-12)?"))
+ampm = trtl.textinput("am or pm?", "Is it am or pm?")
+
+hour.turtlesize(3,3)
+hour.goto(-200,200)
+
+
+
+
+
+hourangle=0
+
+
+
+#for each number print it from the list
+if starthour ==1:
+    for i in range(24): 
+        hour.setheading(30*-hourangle+60)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==2:
+    for i in range(24): 
+        hour.setheading(30*-hourangle+30)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==3:
+    for i in range(24): 
+        hour.setheading(30*-hourangle)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==4:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-30)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==5:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-60)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==6:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-90)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==7:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-120)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==8:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-150)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==9:
+    for i in range(24): 
+        hour.setheading(30*-hourangle-180)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==10:
+    for i in range(24): 
+        hour.setheading(30*-hourangle+150)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==11:
+    for i in range(24): 
+        hour.setheading(30*-hourangle+120)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+elif starthour==12:
+    for i in range(24): 
+        hour.setheading(30*-hourangle+90)
+        hour.forward(30)
+        hour.stamp()
+        hour.goto(-200,200)
+        time.sleep(2)
+        hour.clear()
+        hourangle +=1
+
+
+
+
 
 
 #make it start at that time of day and go through a full day to where you started
