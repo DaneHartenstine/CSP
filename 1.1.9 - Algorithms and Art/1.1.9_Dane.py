@@ -2,7 +2,7 @@ import turtle as trtl
 
 import time
 
-
+trtl.color("green")
 
 #make the clock (hour_hand size=(3,3))
 trtl.speed(0)
@@ -163,11 +163,25 @@ trtl.penup()
 trtl.goto(1000,1000)
 
 #make lists for the time and different times of day
-hourslist=[1,2,3,4,5,6,7,8,9,10,10,12]
+hourslist= list(range(1, 25))
+sunlist = ["sun rising", "sun up", "sun setting", "sun down"]
 
-sunlist=["sun rising","sun_up","sun setting","sun_down"]
+sun_state_for_hour = []
+for h in hourslist:
+    if 6 <= h <= 8:
+        sun_state_for_hour.append(sunlist[0])
+    elif 9 <= h <= 17:
+        sun_state_for_hour.append(sunlist[1])
+    elif 18 <= h <= 19:
+        sun_state_for_hour.append(sunlist[2])
+    else:
+        sun_state_for_hour.append(sunlist[3])
 
-
+sun_positions = [
+    -120, -120, -120, -120, -120, -80, -40, 0,   # 1-8
+    120, 120, 120, 120, 120, 120, 120, 120, 120, # 9-17
+    80, 40, -20, -120, -120, -120, -120, -120    # 18-24
+]
 
 #make new shape for hour hand
 trtl.addshape("hour_hand",((-1,-12),(1,-12),(1,4),(3,4),(0,8),(-3,4),(-1,4),(-1,-12)))
@@ -176,14 +190,14 @@ trtl.addshape("hour_hand",((-1,-12),(1,-12),(1,4),(3,4),(0,8),(-3,4),(-1,4),(-1,
 #ask what time they want(1-24)
 
 hour = trtl.Turtle(shape="hour_hand")
-
+hour.color("green")
 hour.penup()
 hour.hideturtle()
 
 
 minute = trtl.Turtle(shape="hour_hand")
 minute.penup()
-
+minute.color("green")
 minute.hideturtle()
 minute.goto(-200,200)
 minute.turtlesize(3,4)
@@ -191,20 +205,24 @@ minute.left(90)
 minute.forward(35)
 minute.showturtle()
 
+sun = trtl.Turtle()
+sun.shape("circle")
+sun.color("yellow")
+sun.turtlesize(5,5)
+sun.penup()
+sun.goto(0, -120)
+
 
 
 starthour=int(trtl.textinput("What time", "What time is it(1-12)?"))
-ampm = trtl.textinput("am or pm?", "Is it am or pm?")
+
 
 hour.turtlesize(3,3)
 hour.goto(-200,200)
 
 
-
-
-
 hourangle=0
-
+wn = trtl.Screen()
 
 
 #for each number print it from the list
@@ -215,8 +233,17 @@ if starthour ==1:
         hour.stamp()
         hour.goto(-200,200)
         time.sleep(2)
-        hour.clear()
+        hour.clearstamps()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        state = sun_state_for_hour[real_hour]
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
+        
+
 elif starthour==2:
     for i in range(24): 
         hour.setheading(30*-hourangle+30)
@@ -226,6 +253,12 @@ elif starthour==2:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(-200, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==3:
     for i in range(24): 
         hour.setheading(30*-hourangle)
@@ -235,6 +268,12 @@ elif starthour==3:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==4:
     for i in range(24): 
         hour.setheading(30*-hourangle-30)
@@ -244,6 +283,12 @@ elif starthour==4:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==5:
     for i in range(24): 
         hour.setheading(30*-hourangle-60)
@@ -253,6 +298,12 @@ elif starthour==5:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==6:
     for i in range(24): 
         hour.setheading(30*-hourangle-90)
@@ -262,6 +313,12 @@ elif starthour==6:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==7:
     for i in range(24): 
         hour.setheading(30*-hourangle-120)
@@ -271,6 +328,12 @@ elif starthour==7:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==8:
     for i in range(24): 
         hour.setheading(30*-hourangle-150)
@@ -280,6 +343,12 @@ elif starthour==8:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==9:
     for i in range(24): 
         hour.setheading(30*-hourangle-180)
@@ -289,6 +358,12 @@ elif starthour==9:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==10:
     for i in range(24): 
         hour.setheading(30*-hourangle+150)
@@ -298,6 +373,12 @@ elif starthour==10:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==11:
     for i in range(24): 
         hour.setheading(30*-hourangle+120)
@@ -307,6 +388,12 @@ elif starthour==11:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 elif starthour==12:
     for i in range(24): 
         hour.setheading(30*-hourangle+90)
@@ -316,13 +403,13 @@ elif starthour==12:
         time.sleep(2)
         hour.clear()
         hourangle +=1
+        real_hour = (starthour + i - 1) % 24
+        sun.goto(0, sun_positions[real_hour])
+        if 6 <= real_hour <= 17:    # day hours
+            wn.bgcolor("skyblue")
+        else:                        # night hours
+            wn.bgcolor("black")
 
-
-
-
-
-
-#make it start at that time of day and go through a full day to where you started
 
 
 
