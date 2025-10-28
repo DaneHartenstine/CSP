@@ -5,6 +5,7 @@ import random as rand
 wn = trtl.Screen()
 
 plus = trtl.Turtle()
+plus.speed(0)
 
 user_trtl = trtl.Turtle(shape="circle")
 user_trtl.penup()
@@ -41,6 +42,8 @@ plus.hideturtle()
 
 wn.listen()
 
+
+#make trtl move freely when ine middle
 def check_key(key):
   wn.tracer(True)
   if user_trtl.pos() == middle:
@@ -52,7 +55,7 @@ def check_key(key):
       user_trtl.goto(user_trtl.xcor(), user_trtl.ycor()-50)
     if key == "Left":
       user_trtl.goto(user_trtl.xcor()-50, user_trtl.ycor())
-
+#restrict that movement everywhere else
   if user_trtl.pos() == top:
     if key == "Down":
       user_trtl.goto(user_trtl.xcor(), user_trtl.ycor()-50)
