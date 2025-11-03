@@ -11,8 +11,6 @@ plus.speed(0)
 user_trtl = trtl.Turtle(shape="circle")
 user_trtl.penup()
 
-current_direction = ""
-
 trtl.addshape("object_arrow",((-1,-12),(1,-12),(1,4),(3,4),(0,8),(-3,4),(-1,4),(-1,-12)))
 arrow = trtl.Turtle(shape="object_arrow")
 arrow.hideturtle()
@@ -132,21 +130,27 @@ def arrow_bottom():
   arrow.forward(700)
   arrow.hideturtle()
  
-rand_list = [arrow_right(), arrow_top(), arrow_left(), arrow_bottom()]
+rand_list = [arrow_right, arrow_top, arrow_left, arrow_bottom]
+
+
+for i in range(5):
+  current_direction = rand.choice(rand_list)
+  current_direction()
 
 
 
 #collision
 
-pixel_size = 20
-if (abs(arrow.xcor()-user_trtl.xcor())< pixel_size):
-  if(abs(arrow.ycor()-user_trtl.ycor())<pixel_size):
+'''
+pixel_size = 100
+if (abs(user_trtl.xcor()-arrow.xcor())< pixel_size):
+  if(abs(user_trtl.ycor()-arrow.ycor())<pixel_size):
     print("you hit the arrow")
     arrow.shape(collision_shape)
     user_trtl.shape(collision_shape)
-    #arrow.fillcolor("red")
-    #user_trtl.fillcolor("red")
-
+    arrow.fillcolor("red")
+    user_trtl.fillcolor("red")
+'''
 #Score
 
 
