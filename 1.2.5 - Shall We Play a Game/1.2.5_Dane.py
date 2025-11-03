@@ -98,9 +98,6 @@ for key_press in {"Up", "Down", "Left", "Right"}:
 
 
 #Random Objects
-
-
-
 def arrow_right():
   arrow.goto(300,0)
   arrow.showturtle()
@@ -132,16 +129,34 @@ def arrow_bottom():
  
 rand_list = [arrow_right, arrow_top, arrow_left, arrow_bottom]
 
+score = 0
+score_writer = trtl.Turtle()
+score_writer.penup()
+score_writer.hideturtle()
+score_writer.goto(200,200)
+score_writer.write(score, font=("Arial", 45, "bold"))
 
-for i in range(5):
+for i in range(10):
   current_direction = rand.choice(rand_list)
   current_direction()
+  score+=1
+  score_writer.clear()
+  score_writer.write(score, font=("Arial", 45, "bold"))
 
-
+countdown.write("Faster!!", font=("Arial", 45, "bold"))
+time.sleep()
+countdown.clear()
+arrow.speed(4)
+for i in range(10):
+  current_direction = rand.choice(rand_list)
+  current_direction()
+  score+=1
+  score_writer.clear()
+  score_writer.write(score, font=("Arial", 45, "bold"))
 
 #collision
 
-'''
+
 pixel_size = 100
 if (abs(user_trtl.xcor()-arrow.xcor())< pixel_size):
   if(abs(user_trtl.ycor()-arrow.ycor())<pixel_size):
@@ -150,8 +165,8 @@ if (abs(user_trtl.xcor()-arrow.xcor())< pixel_size):
     user_trtl.shape(collision_shape)
     arrow.fillcolor("red")
     user_trtl.fillcolor("red")
-'''
-#Score
+
+
 
 
 
