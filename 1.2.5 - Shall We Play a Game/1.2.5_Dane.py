@@ -52,7 +52,10 @@ plus.hideturtle()
 #Start Screen
 countdown.penup()
 countdown.goto(-200,100)
-countdown.write("Dodge the arrows!!", font=("Arial", 45, "bold"))
+countdown.write("Dodge the Arrows!!", font=("Arial", 45, "bold"))
+time.sleep(1)
+countdown.clear()
+countdown.write("Use the Arrow Keys", font=("Arial", 45, "bold"))
 time.sleep(1)
 countdown.clear()
 countdown.goto(-15,100)
@@ -78,7 +81,7 @@ def game_over():
   countdown.goto(-100,100)
   countdown.write("You Lose...", font=("Arial", 45, "bold"))
 
-def check_key(key):
+def user_movements(key):
   wn.tracer(True)
   if user_trtl.pos() == middle:
     if key == "Up":
@@ -173,7 +176,7 @@ wn.listen()
 #User Movement
 
 for key_press in {"Up", "Down", "Left", "Right"}: 
-  wn.onkeypress(lambda l=key_press: check_key(l), key_press)
+  wn.onkeypress(lambda l=key_press: user_movements(l), key_press)
 
 #Random Object Movement
 
