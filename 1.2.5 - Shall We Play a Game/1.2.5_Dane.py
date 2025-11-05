@@ -17,7 +17,6 @@ arrow.hideturtle()
 arrow.penup()
 arrow.shapesize(3)
 
-
 middle=(0,0)
 top=(0,50)
 right=(50,0)
@@ -27,8 +26,15 @@ left=(-50,0)
 countdown = trtl.Turtle()
 countdown.hideturtle()
 
+##score
+score = 0
+score_writer = trtl.Turtle()
+score_writer.penup()
+score_writer.hideturtle()
+score_writer.goto(200,200)
+score_writer.write(score, font=("Arial", 45, "bold"))
 
-collision_shape = "square"
+game_running = True
 
 #area for movement of user
 plus.penup()
@@ -43,7 +49,7 @@ for area in range(4):
   plus.right(90)
 plus.hideturtle()
 
-#Win/Loss Screen
+#Start Screen
 countdown.penup()
 countdown.goto(-200,100)
 countdown.write("Dodge the arrows!!", font=("Arial", 45, "bold"))
@@ -63,9 +69,15 @@ countdown.write("GO", font=("Arial", 45, "bold"))
 time.sleep(1)
 countdown.clear()
 
-#User Movement
+#Definitons
 
 ##make trtl move freely when ine middle
+def game_over():
+  global game_running
+  game_running = False
+  countdown.goto(-100,100)
+  countdown.write("You Lose...", font=("Arial", 45, "bold"))
+
 def check_key(key):
   wn.tracer(True)
   if user_trtl.pos() == middle:
@@ -91,87 +103,118 @@ def check_key(key):
     if key == "Right":
       user_trtl.goto(user_trtl.xcor()+50, user_trtl.ycor())
 
-wn.listen()
+forward_legth =15
 
-for key_press in {"Up", "Down", "Left", "Right"}: 
-  wn.onkeypress(lambda l=key_press: check_key(l), key_press)
-
-
-#Random Objects
 def arrow_right():
   arrow.goto(300,0)
   arrow.showturtle()
   arrow.setheading(180)
-  arrow.forward(700)
+  for step in range(60):
+    if not game_running:
+      break
+    arrow.forward(forward_legth)
+    if arrow.distance(user_trtl) < 40:
+      game_over()
+      print("you hit the arrow")
+      break
+    wn.update()
+    time.sleep(0.02)
   arrow.hideturtle()
 
 def arrow_left():
   arrow.goto(-300,0)
   arrow.showturtle()
   arrow.setheading(0)
-  arrow.forward(700)
+  for step in range(60):
+    if not game_running:
+      break
+    arrow.forward(forward_legth)
+    if arrow.distance(user_trtl) < 40:
+      game_over()
+      print("you hit the arrow")
+      break
+    wn.update()
+    time.sleep(0.02)
   arrow.hideturtle()
-
 
 def arrow_top():
   arrow.goto(0,300)
   arrow.showturtle()
   arrow.setheading(270)
-  arrow.forward(700)
+  for step in range(60):
+    if not game_running:
+      break
+    arrow.forward(forward_legth)
+    if arrow.distance(user_trtl) < 40:
+      game_over()
+      print("you hit the arrow")
+      break
+    wn.update()
+    time.sleep(0.02)
   arrow.hideturtle()
 
 def arrow_bottom():
   arrow.goto(0,-300)
   arrow.showturtle()
   arrow.setheading(90)
-  arrow.forward(700)
+  for step in range(60):
+    if not game_running:
+      break
+    arrow.forward(forward_legth)
+    if arrow.distance(user_trtl) < 40:
+      game_over()
+      print("you hit the arrow")
+      break
+    wn.update()
+    time.sleep(0.02)
   arrow.hideturtle()
- 
+
+wn.listen()
+#User Movement
+
+for key_press in {"Up", "Down", "Left", "Right"}: 
+  wn.onkeypress(lambda l=key_press: check_key(l), key_press)
+
+#Random Object Movement
+
 rand_list = [arrow_right, arrow_top, arrow_left, arrow_bottom]
 
-score = 0
-score_writer = trtl.Turtle()
-score_writer.penup()
-score_writer.hideturtle()
-score_writer.goto(200,200)
-score_writer.write(score, font=("Arial", 45, "bold"))
+trtl_distance = user_trtl.distance(arrow)
 
+#rand movement
+arrow.speed(10)
 for i in range(10):
+  if not game_running:
+    break
   current_direction = rand.choice(rand_list)
   current_direction()
+  if not game_running:
+    break
   score+=1
   score_writer.clear()
   score_writer.write(score, font=("Arial", 45, "bold"))
-
-countdown.write("Faster!!", font=("Arial", 45, "bold"))
-time.sleep()
+  if arrow.distance(user_trtl) < 40:
+    game_over()
+if score == 10:
+  countdown.write("Faster!!", font=("Arial", 45, "bold"))
+  forward_legth += 10
+time.sleep(2)
 countdown.clear()
 arrow.speed(4)
 for i in range(10):
+  if not game_running:
+    break
   current_direction = rand.choice(rand_list)
   current_direction()
   score+=1
   score_writer.clear()
   score_writer.write(score, font=("Arial", 45, "bold"))
-
-#collision
-
-
-pixel_size = 100
-if (abs(user_trtl.xcor()-arrow.xcor())< pixel_size):
-  if(abs(user_trtl.ycor()-arrow.ycor())<pixel_size):
-    print("you hit the arrow")
-    arrow.shape(collision_shape)
-    user_trtl.shape(collision_shape)
-    arrow.fillcolor("red")
-    user_trtl.fillcolor("red")
-
-
-
-
-
-
-
+  if arrow.distance(user_trtl) < 40:
+    game_over()
+    break
+if score == 20:
+  score_writer.goto(-100,100)
+  score_writer.write("You Win!!", font=("Arial", 45, "bold"))
 
 wn = trtl.Screen()
 wn.mainloop()
