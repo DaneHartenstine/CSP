@@ -1,4 +1,5 @@
 import turtle as trtl
+wn = trtl.Screen()
 
 #Envelope
 trtl.speed(0)
@@ -22,8 +23,37 @@ trtl.begin_fill()
 trtl.circle(-20)
 trtl.end_fill()
 
-#Ask what branch of military
+trtl.penup()
+trtl.color("black")
+trtl.goto(-100,150)
+trtl.write("Click me!", font=("Arial", 45, "bold"))
 
+def clear(x,y):
+    trtl.clear()
+wn.onclick(clear)
+
+
+
+#Ask what branch of military
+'''boat_image = "navy boat.gif"
+
+def navy ():
+    wn.addshape(boat_image)
+
+def airforce():
+    fasd
+def army():
+    asfg
+def marine():
+    afeg
+def spaceforce():
+    qwr
+def coastguard():
+    wer
+
+navy()
+#branch_list = [navy, airforce, army, marine, spaceforce, coastguard]
+'''
 #message
 
 
@@ -36,5 +66,5 @@ trtl.end_fill()
 #Flag
 
 
-wn = trtl.Screen()
+
 wn.mainloop()
