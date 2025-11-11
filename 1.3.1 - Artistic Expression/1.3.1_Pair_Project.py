@@ -35,10 +35,12 @@ wn.onclick(clear)
 
 
 #Ask what branch of military
-'''boat_image = "navy boat.gif"
+boat_image = "navy boat.gif"
 
 def navy ():
     wn.addshape(boat_image)
+    boat = trtl.Turtle(shape=boat_image)
+    
 
 def airforce():
     fasd
@@ -51,9 +53,9 @@ def spaceforce():
 def coastguard():
     wer
 
-navy()
+
 #branch_list = [navy, airforce, army, marine, spaceforce, coastguard]
-'''
+
 #message
 
 
