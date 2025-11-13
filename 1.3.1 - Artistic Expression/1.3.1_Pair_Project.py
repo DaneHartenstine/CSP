@@ -2,9 +2,8 @@ import turtle as trtl
 wn = trtl.Screen()
 
 
-def clear(x,y):
-    trtl.clear()
-wn.onclick(clear)
+
+
 
 
 
@@ -21,9 +20,11 @@ rocket_image = "rocket.gif"
 space_image = "space_force.gif"
 lighthouse_image = "lighthouse.gif"
 coastguard_image = "coast_guard.gif"
+writer = trtl.Turtle()
+writer.hideturtle()
 
 #envelope
-def envelope(): 
+'''def envelope(): 
     trtl.pensize(5)   
     trtl.color("black")
     trtl.speed(0)
@@ -54,108 +55,259 @@ def envelope():
 
 #Show branch of military in background
 def navy ():
-    wn.addshape(boat_image)
-    boat = trtl.Turtle(shape=boat_image)
-    wn.addshape(navy_image)
-    navy_e = trtl.Turtle(shape=navy_image)
-    navy_e.penup()
-    navy_e.speed(0)
-    navy_e.goto(200,200)
     trtl.color("white")
-    trtl.pensize(600)
-    trtl.pendown()
-    trtl.forward(200)
-    envelope()
-
-def airforce():
-    wn.addshape(airforce_image)
-    wn.addshape(jet_image)
-    jet = trtl.Turtle(shape=jet_image)
-    airforce_e = trtl.Turtle(shape=airforce_image)
-    airforce_e.penup()
-    airforce_e.speed(0)
-    airforce_e.goto(200,200)
-    trtl.color("white")
-    trtl.pensize(600)
-    trtl.pendown()
-    trtl.forward(200)
-    envelope()
-
-def army():
-    wn.addshape(army_image)
-    wn.addshape(tank_image)
-    tank = trtl.Turtle(shape=tank_image)
-    army_e = trtl.Turtle(shape=army_image)
-    army_e.penup()
-    army_e.speed(0)
-    army_e.goto(200,200)
-    trtl.color("white")
-    trtl.pensize(600)
-    trtl.pendown()
-    trtl.forward(200)
-    envelope()
-
-def marine():
-    wn.addshape(marine_image)
-    wn.addshape(humvee_image)
-    humvee = trtl.Turtle(shape=humvee_image)
-    marine_e = trtl.Turtle(shape=marine_image)
-    marine_e.penup()
-    marine_e.speed(0)
-    marine_e.goto(200,200)
-    trtl.color("white")
-    trtl.pensize(600)
-    trtl.pendown()
-    trtl.forward(200)
-    envelope()
-
-def spaceforce():
-    wn.addshape(space_image)
-    wn.addshape(rocket_image)
-    rocket = trtl.Turtle(shape=rocket_image)
-    space_e = trtl.Turtle(shape=space_image)
-    space_e.penup()
-    space_e.speed(0)
-    space_e.goto(-200,200)
-    trtl.color("white")
-    trtl.pensize(600)
-    trtl.pendown()
-    trtl.forward(200)
-    envelope()
-
-def coastguard():
-    wn.addshape(coastguard_image)
-    wn.addshape(lighthouse_image)
-    lighthouse = trtl.Turtle(shape=lighthouse_image)
-    coastguard_e = trtl.Turtle(shape=coastguard_image)
-    coastguard_e.penup()
-    coastguard_e.speed(0)
-    coastguard_e.goto(200,200)
-    trtl.color("white")
+    trtl.speed(0)
     trtl.pensize(6000)
     trtl.pendown()
     trtl.forward(200)
     envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(boat_image)
+        boat = trtl.Turtle(shape=boat_image)
+        wn.addshape(navy_image)
+        navy_e = trtl.Turtle(shape=navy_image)
+        navy_e.penup()
+        navy_e.speed(0)
+        navy_e.goto(200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
 
+def airforce():
+    trtl.color("white")
+    trtl.speed(0)
+    trtl.pensize(6000)
+    trtl.pendown()
+    trtl.forward(600)
+    envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(airforce_image)
+        wn.addshape(jet_image)
+        jet = trtl.Turtle(shape=jet_image)
+        airforce_e = trtl.Turtle(shape=airforce_image)
+        airforce_e.penup()
+        airforce_e.speed(0)
+        airforce_e.goto(200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
-branch_list = [navy, airforce, army, marine, spaceforce, coastguard]
+def army():
+    trtl.color("white")
+    trtl.speed(0)
+    trtl.pensize(6000)
+    trtl.pendown()
+    trtl.forward(200)
+    envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(army_image)
+        wn.addshape(tank_image)
+        tank = trtl.Turtle(shape=tank_image)
+        army_e = trtl.Turtle(shape=army_image)
+        army_e.penup()
+        army_e.speed(0)
+        army_e.goto(200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
-army()
+def marine():
+    trtl.color("white")
+    trtl.speed(0)
+    trtl.pensize(6000)
+    trtl.pendown()
+    trtl.forward(200)
+    envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(marine_image)
+        wn.addshape(humvee_image)
+        humvee = trtl.Turtle(shape=humvee_image)
+        marine_e = trtl.Turtle(shape=marine_image)
+        marine_e.penup()
+        marine_e.speed(0)
+        marine_e.goto(200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
-#branch = trtl.textinput("Branch of Military","What Branch of Military Did You Serve In?(navy, airforce, army, marine, spaceforce, coastguard)")
+def spaceforce():
+    trtl.color("white")
+    trtl.speed(0)
+    trtl.pensize(6000)
+    trtl.pendown()
+    trtl.forward(200)
+    envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(space_image)
+        wn.addshape(rocket_image)
+        rocket = trtl.Turtle(shape=rocket_image)
+        space_e = trtl.Turtle(shape=space_image)
+        space_e.penup()
+        space_e.speed(0)
+        space_e.goto(-200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
-#while branch not in branch_list:
-    #trtl.textinput("Thats Not A Branch, Spelling Error","What Branch of Military Did You Serve In?")
+def coastguard():
 
+    trtl.color("white")
+    trtl.speed(0)
+    trtl.pensize(12000)
+    trtl.pendown()
+    trtl.forward(200)
+    envelope()
+    def clear(x,y):
+        trtl.clear()
+        wn.addshape(coastguard_image)
+        wn.addshape(lighthouse_image)
+        lighthouse = trtl.Turtle(shape=lighthouse_image)
+        coastguard_e = trtl.Turtle(shape=coastguard_image)
+        coastguard_e.penup()
+        coastguard_e.speed(0)
+        coastguard_e.goto(200,200)
+        writer.speed(0)
+        writer.hideturtle()
+        writer.penup()
+        writer.goto(-400,300)
+        writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
+    wn.onclick(clear)
 
+branch_list = ["navy", "airforce","army","marine","spaceforce","coastguard"]
 
+branch = trtl.textinput("Branch of Military","What Branch of Military Did You Serve In?(navy, airforce, army, marine, spaceforce, coastguard)")
 
-#message
+while branch not in branch_list:
+    branch = trtl.textinput("That isnt a branch(Typo?)","What Branch of Military Did You Serve In?(navy, airforce, army, marine, spaceforce, coastguard)")
+
+if branch == branch_list[0]:
+    navy()
+if branch == branch_list[1]:
+    airforce()
+if branch == branch_list[2]:
+    army()
+if branch == branch_list[3]:
+    marine()
+if branch == branch_list[4]:
+    spaceforce()
+if branch == branch_list[5]:
+    coastguard()'''
 
 
 #Flag
+flag = trtl.Turtle()
+flag.speed(0)
+flag.right(90)
+for i in range(3):
+    flag.fillcolor("red")
+    flag.begin_fill()
+    flag.pencolor("red")
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(150)
+    flag.right(90)
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(150)
+    flag.right(90)
+    flag.end_fill()
+    flag.forward(11.5)
+    flag.fillcolor("white")
+    flag.begin_fill()
+    flag.pencolor("white")
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(150)
+    flag.right(90)
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(150)
+    flag.right(90)
+    flag.end_fill()
+    flag.forward(11.5)
+flag.fillcolor("red")
+flag.begin_fill()
+flag.pencolor("red")
+flag.forward(11.5)
+flag.right(90)
+flag.forward(150)
+flag.right(90)
+flag.forward(11.5)
+flag.right(90)
+flag.forward(150)
+flag.right(90)
+flag.end_fill()
+flag.forward(11.5)
+for i in range(3):
+    flag.fillcolor("white")
+    flag.begin_fill()
+    flag.pencolor("white")
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(300)
+    flag.right(90)
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(300)
+    flag.right(90)
+    flag.end_fill()
+    flag.forward(11.5)
+    flag.fillcolor("red")
+    flag.begin_fill()
+    flag.pencolor("red")
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(300)
+    flag.right(90)
+    flag.forward(11.5)
+    flag.right(90)
+    flag.forward(300)
+    flag.right(90)
+    flag.end_fill()
+    flag.forward(11.5)
+flag.fillcolor("white")
+flag.begin_fill()
+flag.pencolor("white")
+flag.forward(11.5)
+flag.right(90)
+flag.forward(300)
+flag.right(90)
+flag.forward(11.5)
+flag.right(90)
+flag.forward(300)
+flag.right(90)
+flag.end_fill()
+flag.forward(11.5)
+flag.right(90)
 
-
+flag.pencolor("black")
+for i in range (2):
+    flag.forward(300)
+    flag.right(90)
+    flag.forward(160)
+    flag.right(90)
+flag.forward(300)
+flag.right(90)
 
 wn.mainloop()
