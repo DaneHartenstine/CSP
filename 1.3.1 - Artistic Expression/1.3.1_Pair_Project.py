@@ -1,12 +1,6 @@
 import turtle as trtl
 wn = trtl.Screen()
 
-
-
-
-
-
-
 #Ask what branch of military
 boat_image = "navy boat.gif"
 navy_image = "navy.gif"
@@ -176,7 +170,6 @@ def spaceforce():
     wn.onclick(clear)
 
 def coastguard():
-
     trtl.color("white")
     trtl.speed(0)
     trtl.pensize(12000)
@@ -184,6 +177,7 @@ def coastguard():
     trtl.forward(200)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(coastguard_image)
         wn.addshape(lighthouse_image)
@@ -199,6 +193,7 @@ def coastguard():
         writer.write("Thank you for your service!", font=("Arial", 45, "bold"))
         flag_creation()
     wn.onclick(clear)
+    
 
 branch_list = ["navy", "airforce","army","marine","spaceforce","coastguard"]
 
@@ -219,7 +214,6 @@ if branch == branch_list[4]:
     spaceforce()
 if branch == branch_list[5]:
     coastguard()
-
 
 #Flag
 def flag_creation():
@@ -265,10 +259,6 @@ def flag_creation():
         star.forward(30)
         star.stamp()
         y_cor -= 15
-
-
-
-
 
     for i in range(3):
         flag.fillcolor("red")
