@@ -56,6 +56,7 @@ def navy ():
     trtl.forward(200)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(boat_image)
         boat = trtl.Turtle(shape=boat_image)
@@ -81,6 +82,7 @@ def airforce():
     trtl.forward(600)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(airforce_image)
         wn.addshape(jet_image)
@@ -105,6 +107,7 @@ def army():
     trtl.forward(200)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(army_image)
         wn.addshape(tank_image)
@@ -129,6 +132,7 @@ def marine():
     trtl.forward(200)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(marine_image)
         wn.addshape(humvee_image)
@@ -153,6 +157,7 @@ def spaceforce():
     trtl.forward(200)
     envelope()
     def clear(x,y):
+        wn.onclick(None)
         trtl.clear()
         wn.addshape(space_image)
         wn.addshape(rocket_image)
