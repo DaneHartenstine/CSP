@@ -12,6 +12,7 @@ def do_command(command):
 
     # If url_entry is blank, use localhost IP address 
     url_val = url_entry.get()
+    url_val = url_val.replace(" ", "")
     if (len(url_val) == 0):
         # url_val = "127.0.0.1"
         url_val = "::1"
