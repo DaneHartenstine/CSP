@@ -42,29 +42,89 @@ def mSave():
 root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
+root.title("Retro Search")
+
+
+root.configure(background="black")
+
+ping_img = tk.PhotoImage(file="spaceinvaders.gif")
+ping_img = ping_img.subsample(5,5)
 
 # set up button to run the do_command function
-#ping_btn = tk.Button(frame, text="Ping URL", command=lambda:do_command("ping -c 10"))
-#ping_btn.pack()
-
 # Modifies the ping button parameters.
 ping_btn = tk.Button(frame, text="ping", 
     command=lambda:do_command("ping -c 10"),
+    image=ping_img)
+ping_btn.pack(side=tk.LEFT) 
 
+lookup_image = tk.PhotoImage(file="ghost.gif")
+lookup_image = lookup_image.subsample(1,1)
 
-  
-    image="spaceinvaders.gif"
-    )
-ping_btn.pack() 
+NSlookup_btn = tk.Button(frame, text="NSlookup", 
+    command=lambda:do_command("NSlookup"),
+    image=lookup_image)
+NSlookup_btn.pack(side=tk.LEFT)
 
-NSlookup_btn = tk.Button(frame, text="NSlookup", command=lambda:do_command("NSlookup"))
-NSlookup_btn.pack()
+tr_img = tk.PhotoImage(file="mario.gif")
+tr_img = tr_img.subsample(5,5)
 
-traceroot_btn = tk.Button(frame, text="Traceroot", command=lambda:do_command("dig +trace"))
-traceroot_btn.pack()
+traceroot_btn = tk.Button(frame, text="Traceroot", 
+    command=lambda:do_command("dig +trace"),
+    image=tr_img)
+traceroot_btn.pack(side=tk.LEFT)
 
-save_btn = tk.Button(frame, text="Save", command = mSave)
-save_btn.pack()
+pac_img = tk.PhotoImage(file="pacman.gif")
+pac_img = pac_img.subsample(3,3)
+
+save_btn = tk.Button(frame, text="Save", 
+    command=lambda:mSave(),
+    image=pac_img)
+save_btn.pack(side=tk.LEFT)
+
+ping_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+ping_URL.pack()
+
+ping_label = tk.Label(ping_URL, text="Ping             ",
+    compound="center",
+    font=("comic sans", 14),
+    bd=0,
+    fg="green2",
+    bg="black")
+ping_label.pack(side=tk.LEFT)
+
+ns_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+ns_URL.pack()
+
+ns_label = tk.Label(ping_URL, text="NSLookup                ",
+    compound="center",
+    font=("comic sans", 14),
+    bd=0,
+    fg="green2",
+    bg="black")
+ns_label.pack(side=tk.LEFT)
+
+trc_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+trc_URL.pack()
+
+trc_label = tk.Label(ping_URL, text="Traceroot            ",
+    compound="center",
+    font=("comic sans", 14),
+    bd=0,
+    fg="green2",
+    bg="black")
+trc_label.pack(side=tk.LEFT)
+
+save_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+save_URL.pack()
+
+save_label = tk.Label(ping_URL, text="Save",
+    compound="center",
+    font=("comic sans", 14),
+    bd=0,
+    fg="green2",
+    bg="black")
+save_label.pack(side=tk.RIGHT)
+
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
@@ -76,8 +136,7 @@ url_label = tk.Label(frame_URL, text="Enter a URL of interest: ",
     font=("comic sans", 14),
     bd=0, 
     relief=tk.FLAT, 
-    cursor="heart",
-    fg="mediumpurple3",
+    fg="green2",
     bg="black")
 url_label.pack(side=tk.LEFT)
 url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # change font
@@ -87,7 +146,7 @@ frame = tk.Frame(root,  bg="black") # change frame color
 frame.pack()
 
 # Adds an output box to GUI.
-command_textbox = tksc.ScrolledText(frame, height=10, width=100)
+command_textbox = tksc.ScrolledText(frame,bg="black", fg="green2", height=10, width=100)
 command_textbox.pack()
 
 
